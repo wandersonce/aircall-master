@@ -1,0 +1,28 @@
+.callDetailContainer h2 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.missedCall {
+  font-size: 16px;
+}
+
+.callTo,
+.callFrom,
+.missedStatus {
+  font-weight: 600;
+}
+
+.missedStatus {
+  color: #ff5733;
+}
+.answeredStatus {
+  color: #0bda51;
+}
+
+.callTo,
+.callFrom {
+  color: #097969;
+}
