@@ -1,0 +1,67 @@
+/*  FEED CALL COMPONENT */
+.callContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.callWrapper > div {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  width: 100%;
+  padding: 10px;
+
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+}
+
+.numberWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.numberWrapper > div:last-child {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.calledFrom {
+  font-size: 14px;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.iconWrapper svg {
+  width: 20px;
+  height: 20px;
+}
+
+.numberWrapper {
+  flex: 1;
+}
+
+.timeWrapper {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  opacity: 0.8;
+  position: relative;
+}
+
+.timeWrapper:before {
+  content: '';
+  width: 1px;
+  background-color: #000;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  opacity: 0.5;
+  transform: translate(0, -50%);
+}

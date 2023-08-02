@@ -1,0 +1,25 @@
+/*  FEED CALL COMPONENT */
+.callWrapper {
+  display: flex;
+}
+
+.archiveCallsBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  width: 100%;
+
+  margin-bottom: 20px;
+  padding: 10px;
+
+  border: none;
+  border-radius: 15px;
+  background-color: #afe1af;
+}
+
+.archiveCallsBtn svg {
+  width: 20px;
+  height: 20px;
+}
