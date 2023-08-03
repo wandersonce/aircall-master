@@ -27,3 +27,9 @@
   flex: 1;
   overflow: scroll;
 }
+
+@media (max-width: 680px) {
+  .container {
+    height: 100vh;
+  }
+}

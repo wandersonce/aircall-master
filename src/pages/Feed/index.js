@@ -20,25 +20,24 @@ export default function Feed() {
     })();
   }, []);
 
-  async function archiveAllCalls() {
-    const res = await api
-      .get('activities')
-      .then((res) => {
-        const allData = res.data;
-        allData.map((data) => {
-          const result = api.patch('activities/' + data.id, {
-            is_archived: true,
-          });
+  async function archiveAllCalls(calls) {
+    await calls.map((data) => {
+      const result = api
+        .patch('activities/' + data.id, {
+          is_archived: true,
+        })
+        .then(() => {
+          window.location.reload(false);
         });
-      })
-      .then(() => {
-        window.location.reload(false);
-      });
+    });
   }
 
   return (
     <div>
-      <button onClick={() => archiveAllCalls()} className="archiveCallsBtn">
+      <button
+        onClick={() => archiveAllCalls(calls)}
+        className="archiveCallsBtn"
+      >
         <HiArchive />
         Archive all calls
       </button>
