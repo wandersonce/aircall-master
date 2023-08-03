@@ -11,16 +11,37 @@ import { Link } from 'react-router-dom';
 
 export default function FeedCalls(calls) {
   const [allCalls, setAllCalls] = useState([]);
+  const [isAllArchived, setIsAllArchived] = useState(false);
 
   useEffect(() => {
+    checkAchivedCalls(calls.calls);
     setAllCalls(calls.calls);
   }, [calls]);
+
+  function checkAchivedCalls(allCalls) {
+    let archivedQty = 0;
+
+    allCalls.map((call) => {
+      if (call.is_archived == false) {
+        archivedQty++;
+      }
+    });
+
+    if (allCalls.length > 0) {
+      console.log(archivedQty);
+
+      if (archivedQty == 0) {
+        setIsAllArchived(true);
+      }
+    }
+  }
 
   return (
     <div className="callContainer">
       {allCalls.map(
         (call) =>
-          call.from && (
+          call.from &&
+          !call.is_archived && (
             <Link to={`/call/${call.id}`} key={call.id} className="callWrapper">
               {call.call_type === 'missed' && (
                 <div>
@@ -95,6 +116,8 @@ export default function FeedCalls(calls) {
             </Link>
           )
       )}
+
+      {isAllArchived && <div>All Calls Are Archived</div>}
     </div>
   );
 }

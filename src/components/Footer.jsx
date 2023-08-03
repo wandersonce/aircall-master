@@ -1,11 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Footer() {
+  const location = useLocation();
+  const currentLocation = location.pathname;
+
   return (
     <footer>
-      <Link to="/">Inbox</Link>
-      <Link to="/archived">Archived </Link>
+      <Link className={`${currentLocation == '/' ? 'active' : ''}`} to="/">
+        Inbox
+      </Link>
+      <Link
+        className={`${currentLocation == '/archived' ? 'active' : ''}`}
+        to="/archived"
+      >
+        Archived{' '}
+      </Link>
     </footer>
   );
 }

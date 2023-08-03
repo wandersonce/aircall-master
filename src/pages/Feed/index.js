@@ -13,16 +13,29 @@ export default function Feed() {
   useEffect(() => {
     setIsLoading(true);
     (async () => {
-      const res = api.get('activities').then((res) => {
+      const res = await api.get('activities').then((res) => {
         setIsLoading(false);
         setCalls(res.data);
       });
     })();
   }, []);
 
+  async function archiveAllCalls() {
+    const res = await api.get('activities').then((res) => {
+      const allData = res.data;
+      allData.map(async (data) => {
+        const res = await api
+          .patch('activities/' + data.id, { is_archived: true })
+          .then((res) => {
+            window.location.reload(false);
+          });
+      });
+    });
+  }
+
   return (
     <div>
-      <button className="archiveCallsBtn">
+      <button onClick={() => archiveAllCalls()} className="archiveCallsBtn">
         <HiArchive />
         Archive all calls
       </button>

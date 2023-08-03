@@ -6,7 +6,11 @@
 }
 
 .missedCall {
-  font-size: 16px;
+  font-size: 18px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .callTo,
@@ -25,4 +29,70 @@
 .callTo,
 .callFrom {
   color: #097969;
+}
+
+.summaryWrapper h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.summaryGrid > div {
+  border-bottom: 1px solid #097969;
+  padding: 10px 0;
+}
+
+.summaryGrid > div:nth-child(odd) {
+  font-weight: bold;
+}
+
+.archiveBtnWrapper {
+  display: flex;
+
+  align-items: center;
+  margin-top: 15px;
+}
+
+.archiveBtn,
+.removeArchiveBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+  padding: 5px 30px;
+
+  min-width: 50%;
+  background-color: #ff5733;
+  color: #fff;
+  font-weight: bold;
+
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.removeArchiveBtn {
+  background-color: #097969;
+}
+
+.archiveBtn:hover,
+.removeArchiveBtn:hover {
+  opacity: 0.8;
+}
+
+.archiveBtn svg,
+.removeArchiveBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.archiveBtn:hover {
+  opacity: 0.8;
 }
