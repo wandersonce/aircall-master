@@ -21,16 +21,19 @@ export default function Feed() {
   }, []);
 
   async function archiveAllCalls() {
-    const res = await api.get('activities').then((res) => {
-      const allData = res.data;
-      allData.map(async (data) => {
-        const res = await api
-          .patch('activities/' + data.id, { is_archived: true })
-          .then((res) => {
-            window.location.reload(false);
+    const res = await api
+      .get('activities')
+      .then((res) => {
+        const allData = res.data;
+        allData.map((data) => {
+          const result = api.patch('activities/' + data.id, {
+            is_archived: true,
           });
+        });
+      })
+      .then(() => {
+        window.location.reload(false);
       });
-    });
   }
 
   return (
