@@ -24,3 +24,11 @@
   width: 20px;
   height: 20px;
 }
+
+.allCallsArchived {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+
+  margin-top: 20px;
+}

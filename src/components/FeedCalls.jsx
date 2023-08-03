@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import dayjs from 'dayjs';
 
@@ -13,31 +13,19 @@ export default function FeedCalls(calls) {
   const [allCalls, setAllCalls] = useState([]);
   const [isAllArchived, setIsAllArchived] = useState(false);
 
+  const ElementRef = useRef(null);
+
   useEffect(() => {
-    checkAchivedCalls(calls.calls);
     setAllCalls(calls.calls);
+
+    const checkDivs = setTimeout(function () {
+      const Elementcount = ElementRef.current.childNodes.length;
+      Elementcount == 0 && setIsAllArchived(true);
+    }, 500);
   }, [calls]);
 
-  function checkAchivedCalls(allCalls) {
-    let archivedQty = 0;
-
-    allCalls.map((call) => {
-      if (call.is_archived == false) {
-        archivedQty++;
-      }
-    });
-
-    if (allCalls.length > 0) {
-      console.log(archivedQty);
-
-      if (archivedQty == 0) {
-        setIsAllArchived(true);
-      }
-    }
-  }
-
   return (
-    <div className="callContainer">
+    <div className="callContainer" ref={ElementRef}>
       {allCalls.map(
         (call) =>
           call.from &&
@@ -117,7 +105,9 @@ export default function FeedCalls(calls) {
           )
       )}
 
-      {isAllArchived && <div>All Calls Are Archived</div>}
+      {isAllArchived && (
+        <div className="allCallsArchived">All Calls Are Archived</div>
+      )}
     </div>
   );
 }
